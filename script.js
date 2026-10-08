@@ -20,8 +20,8 @@ function iniciaJogo() {
     atual = 0;
     historiaFinal = "";
     telaInicial.style.display = 'none';
-    caixaPerguntas.classList.remove("mostrar");
-    caixaAlternativas.classList.remove("mostrar");
+    caixaPerguntas.style.display = 'block';
+    caixaAlternativas.style.display = 'flex';
     caixaResultado.classList.remove("mostrar");
     mostraPergunta();
 }
@@ -59,9 +59,10 @@ function respostaSelecionada(opcaoSelecionada) {
 }
 
 function mostraResultado() {
+    caixaPerguntas.style.display = 'block';
     caixaPerguntas.textContent = `Ao final desta grande jornada, a lenda de ${nome} conta que...`;
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.style.display = 'none';
     caixaResultado.classList.add("mostrar");
     botaoJogarNovamente.addEventListener("click", jogaNovamente);
 }
@@ -70,7 +71,9 @@ function jogaNovamente() {
     atual = 0;
     historiaFinal = "";
     caixaResultado.classList.remove("mostrar");
-    iniciaJogo();
+    telaInicial.style.display = 'block';
+    caixaPerguntas.style.display = 'none';
+    caixaAlternativas.style.display = 'none';
 }
 
 function substituiNome() {
